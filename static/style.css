@@ -2,9 +2,11 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	/* Bottom right: the header sits at the top and #nav_entries at the bottom
+	   left, so this is the one corner that collides with neither. */
 	position: fixed;
-	top: calc(0.5rem + env(safe-area-inset-top));
-	right: calc(0.5rem + env(safe-area-inset-right));
+	bottom: calc(0.75rem + env(safe-area-inset-bottom));
+	right: calc(0.75rem + env(safe-area-inset-right));
 	width: 2.5rem;
 	height: 2.5rem;
 	border: 1px solid var(--frss-border-color, #ccc);
