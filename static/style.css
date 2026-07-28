@@ -1,0 +1,24 @@
+#exit-reader-view {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: fixed;
+	top: calc(0.5rem + env(safe-area-inset-top));
+	right: calc(0.5rem + env(safe-area-inset-right));
+	width: 2.5rem;
+	height: 2.5rem;
+	border: 1px solid var(--frss-border-color, #ccc);
+	border-radius: 50%;
+	background-color: var(--frss-background-color, #fff);
+	color: inherit;
+	font-size: 1rem;
+	line-height: 1;
+	text-decoration: none;
+	opacity: 0.55;
+	z-index: 60;
+}
+
+#exit-reader-view:hover,
+#exit-reader-view:focus {
+	opacity: 1;
+}

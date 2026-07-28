@@ -1,0 +1,8 @@
+{
+	"name": "Exit Reader View",
+	"author": "bmmmm",
+	"description": "Adds a floating button to the reading view that returns to the normal view in one click.",
+	"version": "0.1.0",
+	"entrypoint": "ExitReaderView",
+	"type": "user"
+}
