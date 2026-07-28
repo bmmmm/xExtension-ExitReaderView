@@ -1,0 +1,32 @@
+name: Tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Git checkout source code
+        uses: actions/checkout@v6
+
+      - name: Check PHP syntax
+        run: |
+          php -v
+          find . -name '*.php' -print0 | xargs -0 -n1 php -l
+
+      - name: Check metadata.json is valid JSON
+        run: |
+          python3 -c "import json,sys; d=json.load(open('metadata.json')); \
+            [sys.exit('missing key: ' + k) for k in ('name','entrypoint','type','version') if k not in d]"
+
+      - name: Check the entrypoint matches the class name
+        run: |
+          entry=$(python3 -c "import json; print(json.load(open('metadata.json'))['entrypoint'])")
+          grep -q "class ${entry}Extension" extension.php \
+            || { echo "extension.php has no class ${entry}Extension"; exit 1; }
