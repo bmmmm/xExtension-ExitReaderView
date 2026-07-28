@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Git checkout source code
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       - name: Check PHP syntax
         run: |
