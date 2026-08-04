@@ -6,6 +6,19 @@
 (function () {
 	const FALLBACK_LABEL = 'Exit the reading view';
 
+	// Rebuilding the current URL rather than linking to a fixed path is what
+	// preserves the selection: whatever feed, category, tag or search sits in
+	// the query string stays, and only the controller/action pair that puts the
+	// stream into the reading view is swapped back. Covered by
+	// tests/exit-url.test.js — getting this wrong drops the reader on the
+	// unfiltered stream, which reads as the extension losing their place.
+	function exitUrl(href) {
+		const url = new URL(href);
+		url.searchParams.set('c', 'index');
+		url.searchParams.set('a', 'normal');
+		return url.pathname + url.search;
+	}
+
 	function translatedLabel() {
 		const vars = window.context && window.context.extensions;
 		const own = vars && vars.exit_reader_view;
@@ -27,16 +40,20 @@
 			return;
 		}
 
-		const url = new URL(window.location.href);
-		url.searchParams.set('c', 'index');
-		url.searchParams.set('a', 'normal');
-
 		const link = document.createElement('a');
 		link.id = 'exit-reader-view';
-		link.href = url.pathname + url.search;
+		link.href = exitUrl(window.location.href);
 		link.textContent = '✕';
 		applyLabel(link);
 		document.body.appendChild(link);
+	}
+
+	// Under the test runner there is no document, and only the pure helper is
+	// exported. The file itself is loaded as a plain <script> in the browser,
+	// never as a CommonJS module.
+	if (typeof document === 'undefined') {
+		module.exports = { exitUrl: exitUrl };
+		return;
 	}
 
 	// The script is loaded asynchronously, so the global context may arrive

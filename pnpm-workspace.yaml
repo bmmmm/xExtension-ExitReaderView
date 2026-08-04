@@ -1,0 +1,3 @@
+# Supply-chain hardening (applies even to this single-package repo).
+minimumReleaseAge: 4320   # 3-day cooldown — freshly compromised releases are usually yanked within hours
+onlyBuiltDependencies: [] # allowlist for build/postinstall scripts; empty = none may run

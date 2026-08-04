@@ -1,0 +1,20 @@
+{
+	"packageManager": "pnpm@11.17.0+sha512.cca3cea332ad254bb84145f966d19f4879615210346fc92c79a047f23a0d7b3cca3c3792f0076ba1f1831d277efbcf0a9119b31a9a60eca7fb3d6231f331ef72",
+	"name": "xextension-exitreaderview",
+	"private": true,
+	"description": "Linting for the Exit Reader View FreshRSS extension",
+	"license": "AGPL-3.0",
+	"engines": {
+		"node": ">=24"
+	},
+	"scripts": {
+		"preinstall": "node -e \"const ua=process.env.npm_config_user_agent||'';if(!ua.startsWith('pnpm/')){console.error('\\n  xExtension-ExitReaderView is pnpm-only (supply-chain policy). Use: pnpm install - npm/yarn are blocked.\\n');process.exit(1)}\"",
+		"eslint": "eslint ."
+	},
+	"devDependencies": {
+		"@eslint/js": "^9.39.5",
+		"eslint": "^9.39.5",
+		"globals": "^17.8.0",
+		"neostandard": "^0.13.0"
+	}
+}
