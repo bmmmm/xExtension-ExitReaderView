@@ -17,8 +17,10 @@ The button only appears in the reading view. It is hidden everywhere else.
 
 ## Installation
 
-1. Download this repository and place the `ExitReaderView` directory into the
-   `extensions/` directory of your FreshRSS installation.
+1. Download the [latest release](https://github.com/bmmmm/xExtension-ExitReaderView/releases/latest)
+   and place the `xExtension-ExitReaderView` directory into the `extensions/`
+   directory of your FreshRSS installation. The default branch is where work in
+   progress lands, so a release is the version that was actually checked.
 2. Enable **Exit Reader View** under *Configuration → Extensions*.
 
 ## Known limitation
